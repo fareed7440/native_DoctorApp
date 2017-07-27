@@ -1,23 +1,31 @@
 import ActionType from './Actiontype';
+import { Actions } from 'react-native-router-flux';
 import { 
      AsyncStorage
 } from 'react-native'
-  
+  const arr = [];
+
 function addPatientRequst(data) {
     console.log('dataaaaaa', data)
-     var string = [];
- 
      return dispatch => {
         dispatch(PatientRequest());
-     string.push(data)
+     arr.push(data)
  //console.log('assss',ass)
-     let ass = JSON.stringify(string) 
- console.log('asaa',ass)
-     AsyncStorage.setItem("patient-detail", ass).then((value)=>{
-      
-dispatch(PatientRequestSuccess(ass));
+    // let ass = JSON.stringify(data) 
+ //console.log('asaa',ass)
+     AsyncStorage.setItem("patient-detail", JSON.stringify(arr) ).then((value)=>{
+      arr : value
+ dispatch(PatientRequestSuccess(arr));
+ alert('Detail submit success')
+ Actions.home()
+
      })
+     AsyncStorage.getItem('patient-detail').then((res) =>
      
+    console.log('ressss',res)
+   
+     )
+    
     
   //console.log('saveeddd',ass)
 

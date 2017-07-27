@@ -1,6 +1,6 @@
-import AddPatient from '../component/addPatient'
+//import AddPatient from '../component/addPatient'
 import { connect } from 'react-redux'
-import addPatientRequst from '../actions/addPatientAction'
+//import addPatientRequst from '../actions/addPatientAction'
 import ViewPatient from '../component/viewPatient'
 
 function mapStateToProps(state) {
@@ -13,11 +13,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
 
-PatientReq: (data) => dispatch(addPatientRequst(data)),
+
     }
 
 }
 
-const PatientCon = connect(mapStateToProps, mapDispatchToProps)(AddPatient)
+const ViewPatientCon = connect(mapStateToProps, mapDispatchToProps)(ViewPatient)
 
-export default PatientCon;
+export default ViewPatientCon;
