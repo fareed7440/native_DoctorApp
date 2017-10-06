@@ -1,47 +1,42 @@
 import React, { Component } from 'react';
 import {
     AsyncStorage, Text,
-    ScrollView
+    ScrollView, StyleSheet
 } from 'react-native'
 import { Container, Content, Card, Header, Item, Input, Button, CardItem, Icon, Right, ListItem, List, Body } from 'native-base';
 
-var tt = [];
+
 
 class ViewPatient extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            mydata: ''
+        }
+        this.onRemove = this.onRemove.bind(this)
     }
+
 
     componentDidMount() {
-
-        AsyncStorage.getItem('patient-detail').then((res) =>
-
-
-
-            tt.push(JSON.parse(res)),
-            console.log('ressss', tt)
-        )
+        this.props.viewPatientData()
+        //     AsyncStorage.getItem('myKeys', (err, result) => {
+        //   console.log('asyncData',result);
+        //          })
     }
+    onRemove(name) {
+        console.log('hahahhaha',name)
+        this.props.delId(name);
+       //this.props.delete()
+    }
+
+
+
     render() {
-        // const arr = [];
-        const data = this.props && this.props.patient && this.props.patient.PatientRed ? this.props.patient.PatientRed : [];
-        console.log('data', data)
-        //   arr.push(data)
-        console.log('tttttt', tt)
-
-
-
-        
+        const data = this.props.view && this.props.view.viewPatient ? this.props.view.viewPatient : []
+        console.log('datatatat', data)
         return (
             <Container>
                 <Content>
-
-
-
-
-
-
-
 
                     <Header searchBar rounded>
                         <Item>
@@ -57,81 +52,55 @@ class ViewPatient extends Component {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-                    <Text style={{ marginLeft: 120 ,color :'blue',fontSize : 20 }}>Patient Detail</Text>
-                    {console.log("far", data)}
-
-
-
-
-
-
                     {
-                        data.map((item, i) => {
+                        data.map((v, key) => {
+                            console.log('vvvvv', v)
                             return (
-                                 <ScrollView>
-                                <Card style={{flex : 1}}>
-                                    <CardItem key={i} >
-                                        <List >
-                                            <ListItem>
-                                                <Text >Name:</Text><Text>{item.name}</Text>
+                                <Card key={key}>
+                                    <CardItem style={styles.cardItem}>
 
-                                            </ListItem>
-                                            <ListItem>
-                                                <Text>Gender:</Text><Text>{item.gender}</Text>
-
-                                            </ListItem>
-                                            <ListItem>
-                                                <Text>Cost:</Text><Text>{item.cost}</Text>
-
-                                            </ListItem>
-
-                                            <ListItem>
-                                                <Text>Date:</Text><Text>{item.date}</Text>
-                                            </ListItem>
-
-                                            <ListItem>
-                                                <Text>Disease:</Text><Text>{item.disease}</Text>
-
-                                            </ListItem>
-                                            <ListItem>
-                                                <Text>Medison:</Text><Text>{item.medison}</Text>
-
-                                            </ListItem>
-
-                                        </List>
+                                        <Text>Name:{' '}{' '}{v.name},{' '}{' '}</Text>
+                                        <Text>Gender:{' '}{' '}{v.gender},{' '}{' '}</Text>
+                                        <Text>Disease:{' '}{' '}{v.disease},{' '}{' '}</Text>
                                     </CardItem>
+                                    <CardItem style={styles.cardItem}>
+                                        <Text>Age:{' '}{' '}{v.age},{' '}{' '}</Text>
+                                        <Text>Date:{' '}{' '}{v.date},{' '}{' '}</Text>
+                                        <Text>Cost:{' '}{' '}{v.cost},{' '}{' '}</Text>
+                                    </CardItem>
+                                     <Button transparent onPress={() => this.onRemove(v.name)}>
+                        <Icon  style={{ marginLeft: 280 }} name="trash" />
+                      </Button>
+                                   
                                 </Card>
-
-</ScrollView>
-
                             )
-                        })
-                    }
-
-
-
-
-
-
-
+                        })}
                 </Content>
             </Container>
         )
     }
-}
 
+}
 export default ViewPatient;
+
+
+const styles = StyleSheet.create({
+
+    cardItem: {
+        // flexDirection: 'column',
+        // width: window.width * 0.95,
+        // alignSelf: 'center',
+        alignItems: 'center',
+        // justifyContent: 'center',
+        // shadowOpacity: 10,
+        // shadowColor: 'grey',
+        // backgroundColor: '#EEEEEE',
+        // margin: 2
+    },
+
+})
+
+
 
 
 

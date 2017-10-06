@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Container, Content, Item, Form, Input, Button, Label, Picker , Card} from 'native-base';
 import DatePicker from 'react-native-datepicker'
+import { Actions } from 'react-native-router-flux';
+
 
 import {
     Text,
     View,
-    TouchableOpacity
+    TouchableOpacity,
+    AsyncStorage
 
 } from 'react-native';
 
@@ -56,8 +59,10 @@ class AddPatient extends Component {
             age: age,
              date: date
         }
-        console.log('ggg', obj)
-        this.props.PatientReq(obj)
+       
+      
+        this.props.PatientReq(obj);
+         Actions.home()
     }
 
     handleInput = (evt) => {
@@ -193,7 +198,7 @@ class AddPatient extends Component {
                         <TouchableOpacity >
                             <Button type="submit"
                                 onPress={this.handleFormInput}
-                                style={{ marginLeft: 150, marginTop: 30 }} bordered>
+                                style={{ marginLeft: 150, marginTop: 20 }} bordered>
                                 <Text>Submit</Text>
                             </Button>
                         </TouchableOpacity >

@@ -34,11 +34,6 @@ class Home extends Component {
                         {/* <Image source={{ uri: 'https://thumbs.dreamstime.com/z/welcome-sign-showing-hello-greeting-hospitality-29397629.jpg' }} style={{ height: 457, width: null, flex: 1 }} /> */}
                   
                 </CardItem>
-                {/*<TouchableOpacity >
-                    <Button full   onPress={()=>Actions.addPatient()}>
-                        <Text>Add patient</Text>
-                    </Button>
-                </TouchableOpacity>*/}
                 <Footer>
                     <FooterTab>
                         <Button>
