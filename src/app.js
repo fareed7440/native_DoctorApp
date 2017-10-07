@@ -21,9 +21,11 @@ class App extends Component {
     render() {
         const store = createStore(indexReducers,{}, applyMiddleware(ReduxThunk)); 
         return (
+             <Root>
             <Provider store={store}>
                     <Routing />
             </Provider>
+             </Root>
         );
     };
 }

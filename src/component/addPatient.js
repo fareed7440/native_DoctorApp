@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Content, Item, Form, Input, Button, Label, Picker , Card} from 'native-base';
+import { Container, Content, Item, Form, Input, Button, Label, Picker , Card,Toast} from 'native-base';
 import DatePicker from 'react-native-datepicker'
 import { Actions } from 'react-native-router-flux';
 
@@ -35,6 +35,16 @@ class AddPatient extends Component {
 
     handleFormInput = (e) => {
         e.preventDefault();
+         if (!this.state.name || !this.state.disease || !this.state.medison ||!this.state.cost || !this.state.age || !this.state.gender ) {
+            Toast.show({
+                text: 'Please insert field',
+                position: 'bottom',
+                buttonText: 'Okay'
+            })
+            //ToastAndroid.show('Please insert Username and Password', ToastAndroid.SHORT);
+        } else {
+           
+        
 
 
 //  const month = ["Jan", "Feb", "Mar", "April", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov"];
@@ -64,7 +74,7 @@ class AddPatient extends Component {
         this.props.PatientReq(obj);
          Actions.home()
     }
-
+    }
     handleInput = (evt) => {
 
         this.setState({ value: evt.target.value });
