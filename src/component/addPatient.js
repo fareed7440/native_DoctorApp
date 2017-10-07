@@ -163,6 +163,7 @@ class AddPatient extends Component {
                             placeholder="select date"
                             format="YYYY.DD.MM"
                             minDate={new Date()}
+                               maxDate={new Date()}
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
                             customStyles={{

@@ -4,14 +4,15 @@ import {
     ScrollView, StyleSheet
 } from 'react-native'
 import { Container, Content, Card, Header, Item, Input, Button, CardItem, Icon, Right, ListItem, List, Body } from 'native-base';
-
+import { Actions } from 'react-native-router-flux';
 
 
 class ViewPatient extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mydata: ''
+            mydata: '',
+            searchValue : ''
         }
         this.onRemove = this.onRemove.bind(this)
     }
@@ -23,16 +24,32 @@ class ViewPatient extends Component {
         //   console.log('asyncData',result);
         //          })
     }
-    onRemove(name) {
-        console.log('hahahhaha',name)
-        this.props.delId(name);
+    onRemove(key) {
+        console.log('onclick Delete Key',key)
+        this.props.delId(key);
+        //Actions.refresh();
+         this.props.viewPatientData()
        //this.props.delete()
     }
+    onSearch(object){
+
+        return object.name.search(this.state.searchValue )>=0 || object.date.search(this.state.searchValue)>=0
+
+    }
+//     componentWillReceiveProps(nextProps) {
+//     console.log('componentWillReceiveProps', nextProps);
+//     if(this.props.delete.isLoaded == true){
+//        // Actions.refresh();
+        
+
+//     }
+// }
 
 
 
     render() {
         const data = this.props.view && this.props.view.viewPatient ? this.props.view.viewPatient : []
+       // const searching = this.props.view.viewPatient.filter()
         console.log('datatatat', data)
         return (
             <Container>
@@ -41,7 +58,11 @@ class ViewPatient extends Component {
                     <Header searchBar rounded>
                         <Item>
                             <Icon name="ios-search" />
-                            <Input placeholder="Search" />
+                            <Input placeholder="Search"
+                            
+                            onChangeText ={(value)=> this.setState({searchValue:value})}
+                            
+                             />
                             <Icon name="ios-people" />
                         </Item>
                         <Button >
@@ -53,7 +74,7 @@ class ViewPatient extends Component {
 
 
                     {
-                        data.map((v, key) => {
+                        data.filter(this.onSearch.bind(this)).map((v, key) => {
                             console.log('vvvvv', v)
                             return (
                                 <Card key={key}>
@@ -68,7 +89,7 @@ class ViewPatient extends Component {
                                         <Text>Date:{' '}{' '}{v.date},{' '}{' '}</Text>
                                         <Text>Cost:{' '}{' '}{v.cost},{' '}{' '}</Text>
                                     </CardItem>
-                                     <Button transparent onPress={() => this.onRemove(v.name)}>
+                                     <Button transparent onPress={() => this.onRemove(key)}>
                         <Icon  style={{ marginLeft: 280 }} name="trash" />
                       </Button>
                                    

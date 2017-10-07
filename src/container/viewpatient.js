@@ -9,14 +9,14 @@ function mapStateToProps(state) {
     console.log('state', state)
     return{
        view : state.viewPatient,
-       delete : state.delete
+       delete : state.delete,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
 viewPatientData: (data) => dispatch(viewPatientRequst(data)),
-delId: (name) => dispatch(deletePatientRequst(name)),
+delId: (key) => dispatch(deletePatientRequst(key)),
 
     }
 
