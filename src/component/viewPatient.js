@@ -27,8 +27,9 @@ class ViewPatient extends Component {
     onRemove(key) {
         console.log('onclick Delete Key',key)
         this.props.delId(key);
-        //Actions.refresh();
-         this.props.viewPatientData()
+        alert('delete')
+       // Actions.viewpatient();
+         //this.props.viewPatientData()
        //this.props.delete()
     }
     onSearch(object){

@@ -8,7 +8,8 @@ import {
     Text,
     View,
     TouchableOpacity,
-    AsyncStorage
+    AsyncStorage,
+    ToastAndroid
 
 } from 'react-native';
 
@@ -26,7 +27,7 @@ class AddPatient extends Component {
             medison: '',
             cost: '',
             age: '',
-            gender: "Gender"
+            gender: "male"
         }
         this.handleFormInput = this.handleFormInput.bind(this);
         this.handleInput = this.handleInput.bind(this);
@@ -36,11 +37,14 @@ class AddPatient extends Component {
     handleFormInput = (e) => {
         e.preventDefault();
          if (!this.state.name || !this.state.disease || !this.state.medison ||!this.state.cost || !this.state.age || !this.state.gender ) {
-            Toast.show({
-                text: 'Please insert field',
-                position: 'bottom',
-                buttonText: 'Okay'
-            })
+            ToastAndroid.show(
+            //     {
+            //     text: 'Please insert field',
+            //     position: 'bottom',
+            //     buttonText: 'Okay'
+            // }
+        'Please insert field',ToastAndroid.SHORT
+        )
             //ToastAndroid.show('Please insert Username and Password', ToastAndroid.SHORT);
         } else {
            
@@ -121,7 +125,6 @@ class AddPatient extends Component {
 
                             onChangeText={(gender) => this.setState({ gender })}
                         >
-                            <Item label="Gender" value="Gender" />
                             <Item label="male" value="male" />
                             <Item label="female" value="female" />
 

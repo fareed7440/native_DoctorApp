@@ -1,6 +1,7 @@
 import ReduxThunk from 'redux-thunk';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import { Root } from "native-base";
 import { createStore, applyMiddleware } from 'redux';
 //import firebase from 'firebase'
 import indexReducers from './Reducers/reducers';
