@@ -27,8 +27,8 @@ class ViewPatient extends Component {
     onRemove(key) {
         console.log('onclick Delete Key',key)
         this.props.delId(key);
-        alert('delete')
-       // Actions.viewpatient();
+        alert('deleted')
+ Actions.home();
          //this.props.viewPatientData()
        //this.props.delete()
     }
