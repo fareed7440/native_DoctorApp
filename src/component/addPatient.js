@@ -9,7 +9,8 @@ import {
     View,
     TouchableOpacity,
     AsyncStorage,
-    ToastAndroid
+    ToastAndroid,
+    StyleSheet
 
 } from 'react-native';
 
@@ -54,10 +55,10 @@ class AddPatient extends Component {
 //  const month = ["Jan", "Feb", "Mar", "April", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov"];
 //         const getmonth = this.state.sdate.getMonth();
 //         const months = month[getmonth];
-  let date = this.state.date.getDate() + " /" + this.state.date.getMonth() + "/" + this.state.date.getFullYear();
-
-
-        let name = this.state.name
+var date = new Date()
+  let date = date.getDate() + " /" + date.getMonth() + "/" + date.getFullYear();
+  console.log(date,'date')
+         let name = this.state.name
         let disease = this.state.disease
         let medison = this.state.medison
         let cost = this.state.cost
@@ -93,7 +94,7 @@ class AddPatient extends Component {
     render() {
         return (
 
-            <Container>
+            <Container style={styles.container}>
                 <Content>
                     <Card style={{flex : 1}}>
                     <Form onSubmit={this.handleFormInput}>
@@ -229,3 +230,17 @@ class AddPatient extends Component {
 
 
 export default AddPatient
+const styles = StyleSheet.create({
+    container : {
+ top: '-2%',
+   marginLeft:'2%',
+    marginTop:'2%',
+    marginRight:'2%',
+   padding: '2%',
+    backgroundColor: '#499967',
+    borderRadius:5,
+    opacity: 0.9
+    },
+
+
+})

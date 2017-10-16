@@ -24,9 +24,9 @@ class ViewPatient extends Component {
         //   console.log('asyncData',result);
         //          })
     }
-    onRemove(key) {
-        console.log('onclick Delete Key',key)
-        this.props.delId(key);
+    onRemove(index) {
+        console.log('onclick Delete Key',index)
+        this.props.delId(index);
         alert('deleted')
  Actions.home();
          //this.props.viewPatientData()
@@ -53,7 +53,7 @@ class ViewPatient extends Component {
        // const searching = this.props.view.viewPatient.filter()
         console.log('datatatat', data)
         return (
-            <Container>
+            <Container style={styles.container}>
                 <Content>
 
                     <Header searchBar rounded>
@@ -75,10 +75,9 @@ class ViewPatient extends Component {
 
 
                     {
-                        data.filter(this.onSearch.bind(this)).map((v, key) => {
-                            console.log('vvvvv', v)
+                        data.filter(this.onSearch.bind(this)).map((v, index) => {
                             return (
-                                <Card key={key}>
+                                <Card key={index}>
                                     <CardItem style={styles.cardItem}>
 
                                         <Text>Name:{' '}{' '}{v.name},{' '}{' '}</Text>
@@ -90,7 +89,7 @@ class ViewPatient extends Component {
                                         <Text>Date:{' '}{' '}{v.date},{' '}{' '}</Text>
                                         <Text>Cost:{' '}{' '}{v.cost},{' '}{' '}</Text>
                                     </CardItem>
-                                     <Button transparent onPress={() => this.onRemove(key)}>
+                                     <Button transparent onPress={() => this.onRemove(index)}>
                         <Icon  style={{ marginLeft: 280 }} name="trash" />
                       </Button>
                                    
@@ -109,16 +108,19 @@ export default ViewPatient;
 const styles = StyleSheet.create({
 
     cardItem: {
-        // flexDirection: 'column',
-        // width: window.width * 0.95,
-        // alignSelf: 'center',
-        alignItems: 'center',
-        // justifyContent: 'center',
-        // shadowOpacity: 10,
-        // shadowColor: 'grey',
-        // backgroundColor: '#EEEEEE',
-        // margin: 2
+ alignItems: 'center',
+   
     },
+container:{
+    top: '-1%',
+   marginLeft:'1%',
+    marginTop:'1%',
+    marginRight:'1%',
+   padding: '2%',
+    backgroundColor: '#499967',
+    borderRadius:5,
+    opacity: 0.9
+}
 
 })
 

@@ -9,7 +9,7 @@ import ViewPatientCon from './container/viewpatient'
 class Routing extends Component{
     render(){
         return(
-            <Router > 
+            <Router titleStyle={{alignSelf:'center'}} > 
 
 <Scene key = "home">
        <Scene key="home" component={Home} hideNavBar = {true} />
