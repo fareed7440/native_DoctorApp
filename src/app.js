@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 //import firebase from 'firebase'
 import indexReducers from './Reducers/reducers';
 import Routing from './router';
+import {Root} from 'native-base'
 
 class App extends Component {
     // componentWillMount() {
